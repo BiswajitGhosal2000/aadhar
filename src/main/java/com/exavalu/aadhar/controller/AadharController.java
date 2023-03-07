@@ -33,8 +33,8 @@ public class AadharController {
 		return new ResponseEntity<>(savedAadhar, HttpStatus.CREATED);
 	}
 	
-	@GetMapping("aadharNo")
-	public ResponseEntity<Aadhar> getAadharByNo(@PathVariable ("aadharNo") Long aadharNo){
+	@GetMapping("id")
+	public ResponseEntity<Aadhar> getAadharByNo(@PathVariable ("id") Long aadharNo){
 		Aadhar aadhar = aadharService.getAadharByNo(aadharNo);
 		return new ResponseEntity<>(aadhar, HttpStatus.OK);
 	}
@@ -45,10 +45,9 @@ public class AadharController {
         return new ResponseEntity<>(aadhars, HttpStatus.OK);
     }
 	
-	@PutMapping("{aadharNo}")
+	@PutMapping("{id}")
     // http://localhost:8080/api/aadhar/1
-    public ResponseEntity<Aadhar> updateAadhar(@PathVariable("aadharNo") Long aadharNo,
-                                           @RequestBody Aadhar aadhar){
+    public ResponseEntity<Aadhar> updateAadhar(@PathVariable("id") Long aadharNo,@RequestBody Aadhar aadhar){
     	aadhar.setAadharNo(aadharNo);
     	Aadhar updatedAadhar = aadharService.updateAadhar(aadhar);
         return new ResponseEntity<>(updatedAadhar, HttpStatus.OK);
